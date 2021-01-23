@@ -1,5 +1,10 @@
 # IPBA-Image_Pixel_RGB_Analysis
 https://scratch.mit.edu/projects/477823740/
+# 共通チュートリアル
+1. このリポジトリをクローンまたはダウンロードする
+```sh
+git clone https://github.com/miikichi/IPBA-Image_Pixel_RGB_Analysis.git
+```
 
 # ※Anaconda 3を使わないならのチュートリアル（非推奨）※
 
