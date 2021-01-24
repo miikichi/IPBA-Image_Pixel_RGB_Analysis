@@ -11,32 +11,34 @@ def openImage():
     return loadedFile
 
 im = openImage()
-rate = input("画像のサイズの割合を指定してください（例、50％＝0.5、10％＝0.1）")
-if type(rate) != "<class 'float'>":
+rate = float(input("画像のサイズの割合を指定してください（例、50％＝0.5、10％＝0.1）"))
+print(type(rate))
+if not isinstance(rate, float):
     print("入力した数値は少数ではないです！")
-if im and type(rate) == "<class 'float'>":
-    print("File loaded!")
+else:
+    if im:
+        print("File loaded!")
     
-    output = []
-    width, height = im.size
-    subWidth = round(width * rate)
-    subHeight = round(height * rate)
-    rgb_im = im.convert('RGBA')
-    resizedIm = rgb_im.resize((subWidth,subHeight))
-    print("width:", width)
-    print("height:", height)
+        output = []
+        width, height = im.size
+        subWidth = round(width * rate)
+        subHeight = round(height * rate)
+        rgb_im = im.convert('RGBA')
+        resizedIm = rgb_im.resize((subWidth,subHeight))
+        print("width:", width)
+        print("height:", height)
 
-    for i in range(subWidth):
-        for n in range(subHeight):
-            r, g, b, a = resizedIm.getpixel((i, n))
-            if a >= 0.7:
-                output.append(RgbToColorCode(r, g, b))
-            else:
-                output.append("E")
+        for i in range(subWidth):
+            for n in range(subHeight):
+                r, g, b, a = resizedIm.getpixel((i, n))
+                if a >= 0.7:
+                    output.append(RgbToColorCode(r, g, b))
+                else:
+                    output.append("E")
     
-    output.append(subHeight)
+        output.append(subHeight)
 
-    f = open('sub2_output.txt', 'w')
-    for x in output:
-        f.write(str(x) + "\n")
-    f.close()
+        f = open('main_output.txt', 'w')
+        for x in output:
+            f.write(str(x) + "\n")
+        f.close()
